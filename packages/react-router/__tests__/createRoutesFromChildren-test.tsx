@@ -34,6 +34,7 @@ describe("creating routes from JSX", () => {
               "loader": undefined,
               "path": "home",
               "shouldRevalidate": undefined,
+              "transparent": undefined,
             },
             Object {
               "action": undefined,
@@ -49,6 +50,7 @@ describe("creating routes from JSX", () => {
               "loader": undefined,
               "path": "about",
               "shouldRevalidate": undefined,
+              "transparent": undefined,
             },
             Object {
               "action": undefined,
@@ -68,6 +70,7 @@ describe("creating routes from JSX", () => {
                   "loader": undefined,
                   "path": undefined,
                   "shouldRevalidate": undefined,
+                  "transparent": undefined,
                 },
                 Object {
                   "action": undefined,
@@ -83,6 +86,7 @@ describe("creating routes from JSX", () => {
                   "loader": undefined,
                   "path": ":id",
                   "shouldRevalidate": undefined,
+                  "transparent": undefined,
                 },
               ],
               "element": undefined,
@@ -94,6 +98,7 @@ describe("creating routes from JSX", () => {
               "loader": undefined,
               "path": "users",
               "shouldRevalidate": undefined,
+              "transparent": undefined,
             },
           ],
           "element": undefined,
@@ -105,6 +110,7 @@ describe("creating routes from JSX", () => {
           "loader": undefined,
           "path": "/",
           "shouldRevalidate": undefined,
+          "transparent": undefined,
         },
       ]
     `);
@@ -149,6 +155,7 @@ describe("creating routes from JSX", () => {
               "loader": [Function],
               "path": "home",
               "shouldRevalidate": [Function],
+              "transparent": undefined,
             },
             Object {
               "action": undefined,
@@ -168,6 +175,7 @@ describe("creating routes from JSX", () => {
                   "loader": undefined,
                   "path": undefined,
                   "shouldRevalidate": undefined,
+                  "transparent": undefined,
                 },
               ],
               "element": undefined,
@@ -179,6 +187,7 @@ describe("creating routes from JSX", () => {
               "loader": undefined,
               "path": "users",
               "shouldRevalidate": undefined,
+              "transparent": undefined,
             },
           ],
           "element": undefined,
@@ -192,6 +201,7 @@ describe("creating routes from JSX", () => {
           "loader": undefined,
           "path": "/",
           "shouldRevalidate": undefined,
+          "transparent": undefined,
         },
       ]
     `);

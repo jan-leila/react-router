@@ -231,6 +231,7 @@ export interface PathRouteProps {
   shouldRevalidate?: NonIndexRouteObject["shouldRevalidate"];
   handle?: NonIndexRouteObject["handle"];
   index?: false;
+  transparent?: NonIndexRouteObject["transparent"];
   children?: React.ReactNode;
   element?: React.ReactNode | null;
   errorElement?: React.ReactNode | null;
@@ -578,6 +579,7 @@ export function createRoutesFromChildren(
       caseSensitive: element.props.caseSensitive,
       element: element.props.element,
       index: element.props.index,
+      transparent: element.props.transparent,
       path: element.props.path,
       loader: element.props.loader,
       action: element.props.action,

@@ -55,6 +55,7 @@ interface RouteObject {
   children?: RouteObject[];
   element?: React.ReactNode;
   index?: boolean;
+  transparent?: boolean;
   path?: string;
 }
 ```

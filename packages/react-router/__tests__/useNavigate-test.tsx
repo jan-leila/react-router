@@ -4,6 +4,7 @@ import {
   MemoryRouter,
   Routes,
   Route,
+  Outlet,
   useNavigate,
   useLocation,
 } from "react-router";
@@ -49,6 +50,43 @@ describe("useNavigate", () => {
       </h1>
     `);
   });
+
+  it("navigates vertically though route tree correctly with transparent routes", () => {
+    function Page() {
+      let navigate = useNavigate();
+      return <button onClick={() => navigate('..')}>click</button>
+    }
+
+    let renderer: TestRenderer.ReactTestRenderer;
+    TestRenderer.act(() => {
+      renderer = TestRenderer.create(
+        <MemoryRouter initialEntries={["/accounts/user_id"]}>
+          <Routes>
+            <Route path="/">
+              <Route index element={<h1>Home</h1>} />
+              <Route path="accounts">
+                <Route path=":id" transparent element={<>profile<Outlet/></>}>
+                  <Route index element={<Page />} />
+                </Route>
+              </Route>
+            </Route>
+          </Routes>
+        </MemoryRouter>
+      );
+    });
+
+    let button = renderer.root.findByType("button");
+
+    TestRenderer.act(() => {
+      button.props.onClick();
+    });
+
+    expect(renderer.toJSON()).toMatchInlineSnapshot(`
+      <h1>
+        Home
+      </h1>
+    `);
+  })
 
   it("navigates to the new location when no pathname is provided", () => {
     function Home() {

@@ -149,12 +149,13 @@ export interface NavigateFunction {
 
 /**
  * When processing relative navigation we want to ignore ancestor routes that
- * do not contribute to the path, such that index/pathless layout routes don't
- * interfere.
+ * do not contribute to the path, such that index/pathless/transparent layout
+ * routes don't interfere.
  *
- * For example, when moving a route element into an index route and/or a
- * pathless layout route, relative link behavior contained within should stay
- * the same.  Both of the following examples should link back to the root:
+ * For example, when moving a route element into an index route, a pathless
+ * layout route, or a transparent layout route, relative link behavior
+ * contained within should stay the same.  Both of the following examples
+ * should link back to the root:
  *
  *   <Route path="/">
  *     <Route path="accounts" element={<Link to=".."}>
@@ -162,8 +163,11 @@ export interface NavigateFunction {
  *
  *   <Route path="/">
  *     <Route path="accounts">
- *       <Route element={<AccountsLayout />}>       // <-- Does not contribute
- *         <Route index element={<Link to=".."} />  // <-- Does not contribute
+ *       <Route element={<AccountsLayout />}>        // <-- Does not contribute
+ *         <Route index element={<Link to=".."} />   // <-- Does not contribute
+ *         <Route path=":id" transparent>            // <-- Does not contribute
+ *           <Route index element={<Link to=".."} /> // <-- Does not contribute
+ *         </Route>
  *       </Route
  *     </Route>
  *   </Route>
@@ -173,6 +177,7 @@ function getPathContributingMatches(matches: RouteMatch[]) {
     (match, index) =>
       index === 0 ||
       (!match.route.index &&
+       !match.route.transparent &&
         match.pathnameBase !== matches[index - 1].pathnameBase)
   );
 }

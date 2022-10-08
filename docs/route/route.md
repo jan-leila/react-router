@@ -68,6 +68,7 @@ Neither style is discouraged and behavior is identical. For the majority of this
 interface RouteObject {
   path?: string;
   index?: boolean;
+  transparent?: boolean;
   children?: React.ReactNode;
   caseSensitive?: boolean;
   id?: string;
@@ -188,6 +189,20 @@ Determines if the route is an index route. Index routes render into their parent
 ```
 
 These special routes can be confusing to understand at first, so we have a guide dedicated to them here: [Index Route][indexroute].
+
+## `transparent`
+
+Determines if the route is a index transparent route. Transparent routes render the same way a normal route would with the only change being they do not effect navigation back up though the route tree.
+
+```jsx
+<Route path="/">
+  <Route path="accounts" transparent>
+      <Route path=":id" element={<Link to=".."} />
+  </Route>
+</Route>
+```
+
+will navigate to `/` instead of `/accounts`
 
 ## `children`
 
